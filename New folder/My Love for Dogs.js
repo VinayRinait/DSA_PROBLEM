@@ -1,0 +1,51 @@
+function runProgram(input) {
+   var input = input.trim().split("\n");
+
+   var N = +input[0];
+
+   var sum = 0;
+   var hrLine = 0;
+
+        var arr1 = input[1].trim().split(" ").map(Number).sort((a,b)=> a-b);
+
+        var arr2 = input[2].trim().split(" ").map(Number).sort((a,b)=> a-b);
+
+        // console.log(arr1);
+
+        while( hrLine < N){
+
+            var S = +arr1[hrLine];
+            var C = +arr2[hrLine];
+            // console.log(S)
+
+            sum += (S * C);
+
+            hrLine++;
+        }
+
+        
+   console.log(sum);
+   
+  }
+  
+  if (process.env.USER === "sangam") {
+    runProgram(``);
+   } else {
+    process.stdin.resume();
+    process.stdin.setEncoding("ascii");
+    let read = "";
+    process.stdin.on("data", function (input) {
+      read += input;
+    });
+    process.stdin.on("end", function () {
+      read = read.replace(/\n$/, "");
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+    });
+    process.on("SIGINT", function () {
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+      process.exit(0);
+    });
+   }
+   
